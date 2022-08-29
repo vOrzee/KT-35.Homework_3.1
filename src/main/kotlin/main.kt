@@ -3,15 +3,13 @@ fun main() {
     println(agoToText(13000))
 }
 
-fun agoToText(timeInSecond: Int): String {
-    return when (timeInSecond) {
-        in 0..60 -> "был(а) только что"
-        in 61..3600 -> "был(а) в сети ${timeInSecond / 60} ${minuteOrHourToText(timeInSecond, true)} назад"
-        in 3601..86400 -> "был(а) в сети ${timeInSecond / 3600} ${minuteOrHourToText(timeInSecond, false)} назад"
-        in 86401..172800 -> "был(а) вчера" //сегодня не очень подходящее слово для этого временного отрезка
-        in 172801..259200 -> "был(а) позавчера"
-        else -> "был(а) давно"
-    }
+fun agoToText(timeInSecond: Int) = when (timeInSecond) {
+    in 0..60 -> "был(а) только что"
+    in 61..3600 -> "был(а) в сети ${timeInSecond / 60} ${minuteOrHourToText(timeInSecond, true)} назад"
+    in 3601..86400 -> "был(а) в сети ${timeInSecond / 3600} ${minuteOrHourToText(timeInSecond, false)} назад"
+    in 86401..172800 -> "был(а) вчера" //сегодня не очень подходящее слово для этого временного отрезка
+    in 172801..259200 -> "был(а) позавчера"
+    else -> "был(а) давно"
 }
 
 fun minuteOrHourToText(timeInSecond: Int, thisMinute: Boolean): String {
